@@ -1,7 +1,4 @@
-
-'use client'
-
-
+'use client';
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -24,12 +21,19 @@ const settings = ['Profile', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [dashboardMenuOpen, setDashboardMenuOpen] = React.useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleOpenDashboardMenu = (event) => {
+    setDashboardMenuOpen(true);
+    setAnchorElNav(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -40,15 +44,19 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const handleCloseDashboardMenu = () => {
+    setDashboardMenuOpen(false);
+    setAnchorElNav(null);
+  };
+
   return (
     <AppBar position="static" sx={{ backgroundColor: 'white' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <img
+          <img
             src='https://res.cloudinary.com/dy5zjyzqy/image/upload/v1703141064/ramhr/aset/stroke-bar_gbelqn.png'
             alt='logo'
-        />
-
+          />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -80,23 +88,29 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={page === 'Dashboard' ? handleOpenDashboardMenu : handleCloseNavMenu}>
                   <Typography textAlign="center" sx={{ color: 'black' }}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-       
+
           <Box sx={{ flexGrow: 1, marginLeft: '5pc', display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <Button
+              onClick={handleOpenDashboardMenu}
+              sx={{ my: 2, color: 'black', display: 'block' }}
+            >
+              Dashboard
+            </Button>
+            {pages.slice(1).map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }} // Ubah warna teks di sini
+                sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 {page}
               </Button>
-            ))} 
+            ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -130,6 +144,28 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+      <Menu
+        id="dashboard-menu"
+        anchorEl={anchorElNav}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        open={dashboardMenuOpen}
+        onClose={handleCloseDashboardMenu}
+      >
+        <MenuItem>
+          <Typography textAlign="center" sx={{ color: 'black' }}>Test 1</Typography>
+        </MenuItem>
+        <MenuItem>
+          <Typography textAlign="center" sx={{ color: 'black' }}>Test 2</Typography>
+        </MenuItem>
+      </Menu>
     </AppBar>
   );
 }
