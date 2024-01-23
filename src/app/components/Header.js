@@ -18,8 +18,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+import PeopleIcon from '@mui/icons-material/People';
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+
 
 const drawerWidth = 240;
 
@@ -103,10 +109,10 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={{backgroundColor: 'white'}}>
         <Toolbar>
           <IconButton
-            color="inherit"
+            color= '#569DAA'
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -122,7 +128,7 @@ export default function MiniDrawer() {
             alt='logo'
           />
           <Typography variant="h6" noWrap component="div">  
-            Mini variant drawer
+            
           </Typography>
         </Toolbar>
       </AppBar>
@@ -137,7 +143,7 @@ export default function MiniDrawer() {
           {['Dashboard'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
-                href="/"
+                href="/dashboard"
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -152,7 +158,7 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <SpaceDashboardIcon /> : <SpaceDashboardIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, fontWeight: 'bold' }} />
               </ListItemButton>
@@ -161,9 +167,39 @@ export default function MiniDrawer() {
         </List>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+         
+          {['Karyawan', 'Kalender'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+                 href={index === 0 ? '/karyawan' : '/kalender'}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                  
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {index % 2 === 0 ? <PeopleIcon /> : <CalendarMonthIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, fontWeight: 'bold' }} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        
+        <Divider />
+        <List>
+          {['Absensi', 'Jadwal'].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+              href={index === 0 ? '/absensi' : '/jadwal'}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -177,18 +213,19 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <FingerprintIcon /> : <EventNoteIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+      <Divider />
+      <List>
+          {['Izin', 'Keluhan'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+              href={index === 0 ? '/izin' : '/keluhan'}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -202,7 +239,7 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <CheckBoxIcon /> : <AssignmentIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
