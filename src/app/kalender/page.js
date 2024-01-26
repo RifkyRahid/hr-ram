@@ -26,9 +26,9 @@ const Page = () => {
             <CustomCard />
           </Grid>
 
-          {/* <Grid item sx={12} sm={6}>
+          <Grid item sx={12} sm={6}>
             <CustomCard />
-          </Grid> */}
+          </Grid>
         </Grid>
       </Box>
     </Box>
