@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")  
+  directUrl = env("DIRECT_URL")
+}
+
+model Karyawan {
+  id_krywn       Int    @id @default(autoincrement())
+  username       String    @unique
+  password       String
+  nama           String
+  tgl_lahir      DateTime
+  kontak         Int
+  nik            Int
+  email          String
+  jabatan        String
+  hari_libur     HariLibur[]
+  awal_kontrak   DateTime 
+  akhir_kontrak  DateTime
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+enum HariLibur {
+    SENIN
+    SELASA
+    RABU  
+    KAMIS
+    JUMAT
+    SABTU
+    MINGGU
+  }
+
+  // LETAK INI DI DALAM MODEL KARYAWAN
+  // Relasi dengan Pengumuman (One-to-Many) 
+  // pengumuman     Pengumuman[]
+
+  // Relasi dengan Jadwal (One-to-Many)
+  // jadwal         Jadwal[]
+
+
+// model Pengumuman {
+//   id_pngmn       String    @id @default(sql("CONCAT('PNGMN', LPAD(nextval('pengumuman_id_pngmn_seq')::text, 3, '0'))")) @test.PNGMNIncrement
+//   judul          String
+//   deskripsi      String
+//   createdAt      DateTime  @default(now())
+//   updatedAt      DateTime  @updatedAt
+
+//   // Relasi dengan Karyawan (Many-to-One)
+//   karyawan       Karyawan @relation(fields: [id_krywn], references: [id_krywn])
+
+//   @@map("pengumuman")
+// }
+
+// model Jadwal {
+//   id_jdwl        String    @id @default(sql("CONCAT('JDWL', LPAD(nextval('jadwal_id_jdwl_seq')::text, 3, '0'))")) @test.JDWLIncrement
+//   nama           String
+//   waktu          DateTime
+//   createdAt      DateTime  @default(now())
+//   updatedAt      DateTime  @updatedAt
+
+//   // Relasi dengan Karyawan (Many-to-One)
+//   karyawan       Karyawan @relation(fields: [id_krywn], references: [id_krywn])
+
+//   @@map("jadwal")
+// }
+
+
+// model Absensi {
+//   id_absn        String    @id @default(sql("CONCAT('ABSN', LPAD(nextval('absen_id_absn_seq')::text, 3, '0'))")) @test.ABSNIncrement
+//   tanggal        DateTime
+//   // kehadiran      
+//   jam_masuk      DateTime
+//   jam_keluar     DateTime
+//   createdAt      DateTime  @default(now())
+//   updatedAt      DateTime  @updatedAt
+
+//   @@map("absensi")
+// }
+
+// model Izin {
+//   id_izin        String    @id @default(sql("CONCAT('IZIN', LPAD(nextval('izin_id_izin_seq')::text, 3, '0'))")) @test.IZINIncrement
+//   ket            String
+//   tgl_pengajuan  String
+//   alasan         String
+//   gambar         String
+
+//   @@map("izin")
+// }
+
+// model Keluhan {
+//   id_kel         String    @id @default(sql("CONCAT('KEL', LPAD(nextval('keluhan_id_kel_seq')::text, 3, '0'))")) @test.KELIncrement
+//   keluhan        String
+//   krtk_srn       String
+
+//   @@map("keluhan")
+// }
+
+
+

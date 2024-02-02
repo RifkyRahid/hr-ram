@@ -30,15 +30,22 @@ const Page = () => {
           <Header />
           <DrawerHeader />
 
-          <Grid item style={{ xs: 6, sm: 6 }}>
+          <Grid
+            item
+            style={{
+              xs: 6,
+              sm: 6,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
             <Card sx={{ maxWidth: 345, marginTop: "10pc" }}>
               <Typography
                 variant="h6"
                 fontWeight={"bold"}
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
                   color: "#0D3B70",
                   marginTop: "20px",
                 }}
@@ -61,15 +68,25 @@ const Page = () => {
             </Card>
           </Grid>
 
-          <Grid item style={{ xs: 6, sm: 6 }}>
+          <Grid
+            item
+            style={{
+              xs: 6,
+              sm: 6,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
             <Card sx={{ maxWidth: 345, marginTop: "10pc" }}>
               <Typography
                 variant="h6"
                 fontWeight={"bold"}
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  
+                  
+                  
                   color: "#0D3B70",
                   marginTop: "20px",
                 }}
