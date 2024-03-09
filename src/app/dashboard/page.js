@@ -12,8 +12,9 @@ import {
   Divider,
 } from "@mui/material";
 import Header from "../components/Header";
+import Tabel from "../components/Tabel";
 
-const DrawerHeader = styled("div")(({ theme }) => ({
+const DrawerHeader = styled("box")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",
@@ -24,7 +25,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const Page = () => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Grid container spacing={3}>
           <Header />
@@ -84,9 +85,6 @@ const Page = () => {
                 variant="h6"
                 fontWeight={"bold"}
                 style={{
-                  
-                  
-                  
                   color: "#0D3B70",
                   marginTop: "20px",
                 }}
@@ -109,6 +107,64 @@ const Page = () => {
             </Card>
           </Grid>
         </Grid>
+        <br />
+        <Divider />
+      </Box>
+
+      <Box
+        sx={{
+          marginLeft: "70px",
+          marginRight: "40px",
+          width: "100",
+          height: "100",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <DrawerHeader />
+
+        <Box
+          sx={{
+            background: "#F2F4F7",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100",
+            width:"400"
+          }}
+        >
+          <Box
+            sx={{
+              background: "white",
+              width: "auto",
+              p: 3,
+              borderRadius: 4,
+              color:"#0D3B70",
+              fontWeight:"bold",
+              fontSize:"20px"
+            }}
+          >
+            PENGUMUMAN HARI INI
+            <Button
+              variant="contained"
+              color="primary"
+              style={{
+                float: "right",
+                marginBottom: "10px",
+                background: "white",
+                color: "#0D3B70",
+                fontWeight: "bold"
+              }}
+            >
+              Tambah
+            </Button>
+            <Tabel />
+          </Box>
+        </Box>
+
+        {/* <Tabel /> */}
       </Box>
     </Box>
   );
