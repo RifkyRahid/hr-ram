@@ -16,6 +16,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import Button from "@mui/material/Button";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function TablePaginationActions(props) {
@@ -96,8 +97,8 @@ const rows = [
     "Kita kedatangan keluarga baru di bagian sales, ntar kenalan ya!",
     3.7,
     null,
-    <Button variant="contained" color="primary">
-      hapus
+    <Button >
+      <DeleteIcon style={{color: "red"}}/>
     </Button>
   ),
   createData(

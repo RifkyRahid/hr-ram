@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import Header from "../components/Header";
 import Tabel from "../components/Tabel";
+import Formpengumuman from "../components/Formpengumuman";
 
 const DrawerHeader = styled("box")(({ theme }) => ({
   display: "flex",
@@ -147,19 +148,12 @@ const Page = () => {
             }}
           >
             PENGUMUMAN HARI INI
-            <Button
-              variant="contained"
-              color="primary"
-              style={{
-                float: "right",
-                marginBottom: "10px",
-                background: "white",
-                color: "#0D3B70",
-                fontWeight: "bold"
-              }}
-            >
-              Tambah
-            </Button>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Formpengumuman/>
+            </div>
+            
+
+            
             <Tabel />
           </Box>
         </Box>

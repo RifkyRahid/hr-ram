@@ -1,11 +1,11 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -21,13 +21,13 @@ export default function FormDialog() {
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
+        TAMBAH PENGUMUMAN
       </Button>
       <Dialog
         open={open}
         onClose={handleClose}
         PaperProps={{
-          component: 'form',
+          component: "form",
           onSubmit: (event) => {
             event.preventDefault();
             const formData = new FormData(event.currentTarget);
@@ -38,27 +38,29 @@ export default function FormDialog() {
           },
         }}
       >
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle style={{ fontWeight: "bold" }}>
+          Tambah Pengumuman
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+            Untuk memberikan pengumuman kepada karyawan, tuliskan isi pengumuman
+            pada tempat yang disediakan.
           </DialogContentText>
+
           <TextField
-            autoFocus
             required
             margin="dense"
             id="name"
-            name="email"
-            label="Email Address"
-            type="email"
+            name="detail"
+            label="Detail Pengumuman"
+            type="text"
             fullWidth
             variant="standard"
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Subscribe</Button>
+          <Button onClick={handleClose}>Kembali</Button>
+          <Button type="submit">Tambah</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
